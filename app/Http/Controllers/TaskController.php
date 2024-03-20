@@ -94,8 +94,7 @@ class TaskController extends Controller
         
         // Calculate Employer Pending and add to the total
         $employerPending = $totalBudget - $totalAdvancePayment;
-        
-        // Calculate Employer Profit and add to the total
+    
         $employerProfit = $employerPending - $totalDevPending;
     }
 
