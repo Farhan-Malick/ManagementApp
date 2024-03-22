@@ -65,41 +65,46 @@ class TaskController extends Controller
     // }
 
     public function taskDetail()
-{
-    $tasks = Task::all();
-    // Initialize totals
-    $totalBudget = 0;
-    $totalAdvancePayment = 0;
-    $totalDevAmount = 0;
-    $totalAdvancePaymentToDev = 0;
-    $totalDevPending = 0;
-
-    // Counter to skip first 7 records
-    $skipCount = 0;
-
-    foreach ($tasks as $task) {
-        if ($skipCount < 7) {
-            $skipCount++;
-            continue; // Skip processing this task
+    {
+        // Retrieve tasks in descending order
+        $tasks = Task::orderBy('id', 'desc')->get();
+    
+        // Initialize totals
+        $totalBudget = 0;
+        $totalAdvancePayment = 0;
+        $totalDevAmount = 0;
+        $totalAdvancePaymentToDev = 0;
+        $totalDevPending = 0;
+    
+        // Counter to track skipped records
+        $skipCount = 0;
+    
+        foreach ($tasks as $task) {
+            // Skip the first 7 records
+            if ($skipCount < 25) {
+                $skipCount++;
+                continue; // Skip processing this task
+            }
+    
+            $totalBudget += $task->budget;
+            $totalAdvancePayment += $task->advance_payment;
+            $totalDevAmount += $task->dev_amount;
+            $totalAdvancePaymentToDev += $task->advance_payment_to_dev;
+    
+            // Calculate DevPending and add to the total
+            $devPending = $task->dev_amount - $task->advance_payment_to_dev;
+            $totalDevPending += max(0, $devPending); // Ensure that negative values are not added
         }
-
-        $totalBudget += $task->budget;
-        $totalAdvancePayment += $task->advance_payment;
-        $totalDevAmount += $task->dev_amount;
-        $totalAdvancePaymentToDev += $task->advance_payment_to_dev;
-        
-        // Calculate DevPending and add to the total
-        $devPending = $task->dev_amount - $task->advance_payment_to_dev;
-        $totalDevPending += max(0, $devPending); // Ensure that negative values are not added
-        
-        // Calculate Employer Pending and add to the total
+    
+        // Calculate Employer Pending
         $employerPending = $totalBudget - $totalAdvancePayment;
     
+        // Calculate Employer Profit
         $employerProfit = $employerPending - $totalDevPending;
+    
+        return view("PortalPages.index", compact('tasks', 'employerProfit', 'employerPending', 'totalBudget', 'totalAdvancePayment', 'totalDevAmount', 'totalAdvancePaymentToDev', 'totalDevPending'));
     }
-
-    return view("PortalPages.index", compact('tasks', 'employerProfit', 'employerPending', 'totalBudget', 'totalAdvancePayment', 'totalDevAmount', 'totalAdvancePaymentToDev', 'totalDevPending'));
-}
+    
 
     public function edit(Task $task)
     {
@@ -108,7 +113,6 @@ class TaskController extends Controller
 
     public function update(Request $request, Task $task)
     {
-       
         $request->validate([
             'budget' => 'nullable|numeric',
             'advance_payment' => 'nullable|numeric',
