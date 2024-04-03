@@ -18,7 +18,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.sidebar')
+        {{-- @include('layouts.sidebar') --}}
 
         <!-- End of Sidebar -->
 
@@ -29,11 +29,11 @@
             <div id="content">
 
                 <!-- Topbar -->
-             @include('layouts.navbar')
+             {{-- @include('layouts.navbar') --}}
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                {{-- <div class="container-fluid">
                     <!-- Content Row -->
                     <div class="row">
 
@@ -122,9 +122,9 @@
                     </div>
 
 
-                </div>
+                </div> --}}
                 <!-- /.container-fluid -->
-                <div class="container-fluid">
+                <div class="container-fluid mt-5">
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Task Upload
@@ -229,7 +229,7 @@
                 
                             <!-- Add more fields as needed -->
                 
-                            <div class="row">
+                            <div class="row mb-5">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -240,13 +240,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {{-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- End of Footer -->
 
         </div>

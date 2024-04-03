@@ -80,11 +80,12 @@ class TaskController extends Controller
         $skipCount = 0;
     
         foreach ($tasks as $task) {
-            // Skip the first 7 records
-            if ($skipCount < 25) {
-                $skipCount++;
-                continue; // Skip processing this task
-            }
+            // Skip the first 25 records
+
+            // if ($skipCount < 25) {
+            //     $skipCount++;
+            //     continue; // Skip processing this task
+            // }
     
             $totalBudget += $task->budget;
             $totalAdvancePayment += $task->advance_payment;

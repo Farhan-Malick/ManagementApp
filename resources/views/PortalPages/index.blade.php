@@ -18,7 +18,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.sidebar')
+        {{-- @include('layouts.sidebar') --}}
 
         <!-- End of Sidebar -->
 
@@ -29,11 +29,11 @@
             <div id="content">
 
                 <!-- Topbar -->
-             @include('layouts.navbar')
+             {{-- @include('layouts.navbar') --}}
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                {{-- <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -130,12 +130,12 @@
                     </div>
 
 
-                </div>
+                </div> --}}
                 <!-- /.container-fluid -->
-                <div class="container-fluid">
+                <div class="container-fluid mt-5 ">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Task Detail</h1>
+                {{-- <h1 class="h3 mb-2 text-gray-800">Task Detail</h1> --}}
                 @if(session('success'))
                 <div class="alert alert-success mt-3">
                     {{ session('success') }}
@@ -153,7 +153,7 @@
                                 <thead style="color: black">
                                     <tr>
                                         <th>id</th>
-                                        <th>Task_Name</th>
+                                        <th>MY_TASK_NAME</th>
                                         <th>Platform</th>
                                         <th>Budget</th>
                                         <th>Advance_Payment</th>
