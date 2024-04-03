@@ -153,7 +153,7 @@
                                 <thead style="color: black">
                                     <tr>
                                         <th>id</th>
-                                        <th>MY_TASK_NAME</th>
+                                        <th>STUDENT_TASK_NAME</th>
                                         <th>Platform</th>
                                         <th>Budget</th>
                                         <th>Advance_Payment</th>
