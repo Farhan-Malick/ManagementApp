@@ -10,6 +10,11 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                    {{ session('error') }}
+                            </div>
+                        @endif
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
@@ -50,7 +55,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -62,6 +67,11 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                            <div class="text-center">
+                                <a href="{{ route('google.login') }}" type="button" class="btn btn-danger w-50 mt-4 mb-0">
+                                    Sign in with Google
+                                </a>
                             </div>
                         </div>
                     </form>
