@@ -84,7 +84,7 @@
                                                     <td>{{$task->id}}</td>
                                                     <td>{{ $task->task_name }}</td>
                                                     <td>{{ $task->platform }}</td>
-                                                    <td>{{ $task->budget }}</td>
+                                                    <td style="color: green"><b>{{ $task->budget }}</b></td>
                                                     <td>{{ $task->advance_payment }}</td>
                                                     <td>
                                                         @if( $task->budget ==  $task->advance_payment)
