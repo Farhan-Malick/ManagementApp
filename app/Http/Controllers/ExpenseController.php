@@ -15,6 +15,7 @@ class ExpenseController extends Controller
             'client_id' => 'required|exists:clients,id',
             'transaction_id' => 'required|exists:transactions,id',
             'amount' => 'required|numeric|min:0',
+            'category' => 'required',
             'description' => 'required|string',
             'date' => 'required|date',
         ]);
@@ -29,12 +30,14 @@ class ExpenseController extends Controller
         }
         
         // Create the expense
-        Expense::create([
+       Expense::create([
             'transaction_id' => $request->transaction_id,
             'amount' => $request->amount,
+            'category' => $request->category,
             'description' => $request->description,
             'date' => $request->date,
         ]);
+        // dd($exp);
         
         return redirect()->back()->with('success', 'Expense created successfully.');
     }

@@ -52,3 +52,4 @@ use App\Http\Controllers\ExpenseController;
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
 Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
 Route::post('/expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+Route::get('/home-accounts',  [HomeAccountsController::class, 'HomeAccounts'])->name('home-accounts');

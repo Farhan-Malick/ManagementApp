@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Expense extends Model
 {
     use HasFactory;
-    protected $fillable = ['transaction_id', 'amount', 'description', 'date'];
+    protected $fillable = ['transaction_id', 'amount', 'category', 'description', 'date'];
 
     public function transaction()
     {
